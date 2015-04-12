@@ -1,28 +1,37 @@
 package atomicworks.applicationone;
 
 import android.content.Context;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import static android.widget.Toast.makeText;
+
 
 public class MainActivity extends ActionBarActivity {
+
+    private static Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toast.makeText(this, "Testing App ones" , Toast.LENGTH_LONG    ).show();
+    //    mContext = MainActivity.this;
+
+        makeText(this, "Testing App ones", Toast.LENGTH_LONG).show();
         doquery();
     }
 
     private static void doquery(){
 
-        Log.i("MainActivity ", "@@@@@doquery called");
+//        Log.i("MainActivity ", "@@@@@doquery called");
+//        Toast toast = new Toast(mContext);
+//        toast.setGravity(Gravity.CENTER, 0, 0);
+//        toast.setDuration(Toast.LENGTH_LONG);
+//        toast.show();
     }
 
 
