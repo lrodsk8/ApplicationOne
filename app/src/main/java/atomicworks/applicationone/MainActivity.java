@@ -1,10 +1,13 @@
 package atomicworks.applicationone;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import static android.widget.Toast.makeText;
@@ -13,13 +16,26 @@ import static android.widget.Toast.makeText;
 public class MainActivity extends ActionBarActivity {
 
     private static Context mContext;
+    private static int RESULT_LOAD_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    //    mContext = MainActivity.this;
+        Button buttonLoadImage = (Button) findViewById(R.id.button_image);
+        buttonLoadImage.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
 
         makeText(this, "Testing App ones", Toast.LENGTH_LONG).show();
         doquery();
